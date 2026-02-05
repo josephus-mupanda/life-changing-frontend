@@ -18,6 +18,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UserType } from "@/lib/types";
 import { useAuth } from "@/lib/auth-context";
+import { motion } from "motion/react";
 
 export function DashboardLayout() {
   const location = useLocation();
@@ -70,38 +71,52 @@ export function DashboardLayout() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      {/* Sidebar for Desktop */}
-      <aside className="hidden md:flex w-64 flex-col border-r bg-teal-900 text-white transition-all duration-300 ease-in-out">
+      {/* Sidebar for Desktop - Now Fixed */}
+      <aside className="hidden md:flex w-64 flex-col border-r bg-gradient-to-b from-teal-900 to-teal-950 text-white fixed h-screen shadow-2xl">
         <div className="p-6">
-          <Link to="/" className="text-2xl font-bold tracking-tight text-[#eacfa2]">
-            LCEO
+          <Link to="/" className="flex items-center gap-2 group">
+            <motion.div 
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+              className="w-10 h-10 rounded-full bg-sand-500/20 backdrop-blur-sm flex items-center justify-center"
+            >
+              <span className="text-xl font-bold text-sand-300">L</span>
+            </motion.div>
+            <span className="text-2xl font-bold tracking-tight text-sand-200 group-hover:text-sand-100 transition-colors">LCEO</span>
           </Link>
-          <p className="text-xs text-teal-300 mt-1 uppercase tracking-wider">{currentUserType} Portal</p>
+          <p className="text-xs text-teal-300 mt-2 uppercase tracking-wider font-medium">{currentUserType} Portal</p>
         </div>
-        <nav className="flex-1 px-4 space-y-2">
+        
+        <nav className="flex-1 px-4 space-y-1 overflow-y-auto">
           {navItems.map((item) => {
             const isActive = location.pathname === item.href || location.pathname.startsWith(`${item.href}/`);
             return (
-              <Link
+              <motion.div 
                 key={item.href}
-                to={item.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                  isActive 
-                    ? "bg-teal-800 text-white shadow-sm ring-1 ring-teal-700" 
-                    : "text-teal-100 hover:bg-teal-800/50 hover:text-white"
-                }`}
+                whileHover={{ x: 4 }}
+                transition={{ duration: 0.2 }}
               >
-                <item.icon className="w-5 h-5" />
-                {item.label}
-              </Link>
+                <Link
+                  to={item.href}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    isActive 
+                      ? "bg-gradient-to-r from-teal-700 to-teal-800 text-white shadow-lg ring-2 ring-teal-600/50" 
+                      : "text-teal-100 hover:bg-teal-800/60 hover:text-white"
+                  }`}
+                >
+                  <item.icon className="w-5 h-5" />
+                  {item.label}
+                </Link>
+              </motion.div>
             );
           })}
         </nav>
-        <div className="p-4 border-t border-teal-800">
+        
+        <div className="p-4 border-t border-teal-800/50">
           <div className="flex items-center gap-3 mb-4 px-2">
-            <Avatar className="h-9 w-9 border-2 border-teal-600">
+            <Avatar className="h-10 w-10 border-2 border-teal-600">
               <AvatarImage src="" />
-              <AvatarFallback className="bg-teal-800 text-[#eacfa2] font-semibold">{initials}</AvatarFallback>
+              <AvatarFallback className="bg-teal-800 text-sand-300 font-semibold">{initials}</AvatarFallback>
             </Avatar>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-white truncate">{user?.fullName || 'User'}</p>
@@ -110,7 +125,7 @@ export function DashboardLayout() {
           </div>
           <Button 
             variant="ghost" 
-            className="w-full justify-start text-teal-300 hover:text-white hover:bg-teal-800"
+            className="w-full justify-start text-teal-300 hover:text-white hover:bg-teal-800 transition-all"
             onClick={handleLogout}
           >
             <LogOut className="mr-2 h-4 w-4" />
@@ -119,11 +134,15 @@ export function DashboardLayout() {
         </div>
       </aside>
 
-      {/* Mobile Header & Content */}
-      <div className="flex-1 flex flex-col min-h-screen overflow-hidden">
+      {/* Main Content Area - Now with left margin for sidebar */}
+      <div className="flex-1 flex flex-col min-h-screen md:ml-64">
+        {/* Mobile Header */}
         <header className="md:hidden border-b bg-white h-16 flex items-center justify-between px-4 sticky top-0 z-40 shadow-sm">
-           <Link to="/" className="text-xl font-bold text-teal-900">
-            LCEO
+          <Link to="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-teal-600 flex items-center justify-center">
+              <span className="text-white font-bold text-sm">L</span>
+            </div>
+            <span className="text-xl font-bold text-teal-900">LCEO</span>
           </Link>
           <Sheet>
             <SheetTrigger asChild>
@@ -131,41 +150,59 @@ export function DashboardLayout() {
                 <Menu className="h-6 w-6 text-teal-900" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="bg-teal-900 text-white border-none w-[280px] sm:w-[350px]">
+            <SheetContent side="left" className="bg-gradient-to-b from-teal-900 to-teal-950 text-white border-none w-[280px] sm:w-[350px]">
               <div className="py-6 h-full flex flex-col">
-                <h2 className="text-2xl font-bold text-[#eacfa2] mb-1 px-4">LCEO</h2>
-                <p className="text-xs text-teal-300 mb-8 px-4 uppercase tracking-wider">{currentUserType} Portal</p>
+                <div className="flex items-center gap-2 mb-2 px-4">
+                  <div className="w-10 h-10 rounded-full bg-sand-500/20 flex items-center justify-center">
+                    <span className="text-xl font-bold text-sand-300">L</span>
+                  </div>
+                  <span className="text-2xl font-bold text-sand-200">LCEO</span>
+                </div>
+                <p className="text-xs text-teal-300 mb-8 px-4 uppercase tracking-wider font-medium">{currentUserType} Portal</p>
                 
-                <nav className="space-y-2 flex-1">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      to={item.href}
-                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-teal-800"
-                    >
-                      <item.icon className="w-5 h-5" />
-                      {item.label}
-                    </Link>
-                  ))}
+                <nav className="space-y-1 flex-1 overflow-y-auto px-2">
+                  {navItems.map((item, index) => {
+                    const isActive = location.pathname === item.href || location.pathname.startsWith(`${item.href}/`);
+                    return (
+                      <motion.div
+                        key={item.href}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                      >
+                        <Link
+                          to={item.href}
+                          className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                            isActive 
+                              ? "bg-gradient-to-r from-teal-700 to-teal-800 text-white shadow-lg" 
+                              : "hover:bg-teal-800/60"
+                          }`}
+                        >
+                          <item.icon className="w-5 h-5" />
+                          {item.label}
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
                 </nav>
 
-                <div className="pt-6 border-t border-teal-800 mt-auto">
-                    <div className="flex items-center gap-3 mb-4 px-2">
-                        <Avatar className="h-9 w-9 border border-teal-600">
-                            <AvatarFallback className="bg-teal-800 text-[#eacfa2]">{initials}</AvatarFallback>
-                        </Avatar>
-                        <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-white truncate">{user?.fullName}</p>
-                        </div>
+                <div className="pt-6 border-t border-teal-800/50 mt-auto">
+                  <div className="flex items-center gap-3 mb-4 px-2">
+                    <Avatar className="h-9 w-9 border border-teal-600">
+                      <AvatarFallback className="bg-teal-800 text-sand-300">{initials}</AvatarFallback>
+                    </Avatar>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-white truncate">{user?.fullName}</p>
                     </div>
-                    <Button 
-                        variant="ghost" 
-                        className="w-full justify-start text-teal-300 hover:text-white hover:bg-teal-800"
-                        onClick={handleLogout}
-                    >
-                        <LogOut className="mr-2 h-4 w-4" />
-                        Log out
-                    </Button>
+                  </div>
+                  <Button 
+                    variant="ghost" 
+                    className="w-full justify-start text-teal-300 hover:text-white hover:bg-teal-800"
+                    onClick={handleLogout}
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Log out
+                  </Button>
                 </div>
               </div>
             </SheetContent>
@@ -173,9 +210,14 @@ export function DashboardLayout() {
         </header>
 
         <main className="flex-1 overflow-y-auto p-4 md:p-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto animate-in fade-in duration-500">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="max-w-7xl mx-auto"
+          >
             <Outlet />
-          </div>
+          </motion.div>
         </main>
       </div>
     </div>

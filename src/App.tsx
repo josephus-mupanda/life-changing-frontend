@@ -10,6 +10,10 @@ import BeneficiaryDashboard from '@/pages/dashboard/BeneficiaryDashboard';
 import DonorDashboard from '@/pages/dashboard/DonorDashboard';
 import DonationPage from '@/pages/donation-page';
 import LoginPage from '@/pages/auth/login-page';
+import RegisterPage from '@/pages/auth/register-page';
+import ForgotPasswordPage from '@/pages/auth/forgot-password-page';
+import ResetPasswordPage from '@/pages/auth/reset-password-page';
+import VerifyEmailPage from '@/pages/auth/verify-email-page';
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from '@/lib/auth-context';
 import { ProtectedRoute } from '@/components/auth/protected-route';
@@ -51,8 +55,14 @@ export default function App() {
             <Route path="/get-involved" element={<GetInvolvedPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/donate" element={<DonationPage />} />
-            <Route path="/login" element={<LoginPage />} />
           </Route>
+
+          {/* Authentication Routes (No Layout) */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/auth/register" element={<RegisterPage />} />
+          <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/auth/verify-email" element={<VerifyEmailPage />} />
 
           {/* Admin Routes */}
           <Route element={<ProtectedRoute allowedRoles={[UserType.ADMIN]} />}>

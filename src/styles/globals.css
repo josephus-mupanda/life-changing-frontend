@@ -13,6 +13,16 @@
   --primary-foreground: #ffffff;
   --secondary: #eacfa2; /* Sand - warmth, empowerment, resilience */
   --secondary-foreground: #2c3e50;
+  --sand-50: #faf7f2;
+  --sand-100: #f5ede0;
+  --sand-200: #eacfa2;
+  --sand-300: #e0b97d;
+  --sand-400: #d6a358;
+  --sand-500: #cc8d33;
+  --sand-600: #a87129;
+  --sand-700: #84551f;
+  --sand-800: #603915;
+  --sand-900: #3c1d0b;
   --muted: #f5f5f5;
   --muted-foreground: #717182;
   --accent: #e9f5f3;
