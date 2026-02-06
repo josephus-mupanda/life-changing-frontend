@@ -15,7 +15,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#4c9789] text-white pt-16 pb-8">
+    <footer className="bg-gradient-to-b from-[#2c5f56] to-[#1e4139] text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         {/* Newsletter Section */}
         <div className="mb-12 pb-12 border-b border-white/20">
@@ -33,7 +33,7 @@ export function Footer() {
                 required
                 className="bg-white/10 border-white/30 text-white placeholder:text-white/60"
               />
-              <Button type="submit" className="bg-[#eacfa2] text-[#4c9789] hover:bg-[#d4b886] font-semibold">
+              <Button type="submit" className="bg-[#eacfa2] text-[#2c5f56] hover:bg-[#d4b886] font-semibold">
                 <Send className="w-4 h-4 mr-2" />
                 Subscribe
               </Button>

@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import { useNavigate } from 'react-router';
 import { 
   Heart, 
   Mail, 
@@ -37,6 +38,7 @@ import {
 } from 'recharts';
 
 export default function DonorsPage() {
+  const navigate = useNavigate();
   const totalDonors = mockDonors.length;
   const recurringDonors = mockDonors.filter(d => d.isRecurringDonor).length;
   const totalDonated = mockDonors.reduce((sum, d) => sum + d.totalDonated, 0);
@@ -66,7 +68,7 @@ export default function DonorsPage() {
           <h1 className="text-3xl font-bold text-gray-900">Donor Management</h1>
           <p className="text-gray-600">Manage and engage with your donor community</p>
         </div>
-        <Button className="bg-teal-600 hover:bg-teal-700">
+        <Button className="bg-red-600 hover:bg-red-700" onClick={() => navigate('/admin/donors/add')}>
           <UserPlus className="w-4 h-4 mr-2" />
           Add New Donor
         </Button>

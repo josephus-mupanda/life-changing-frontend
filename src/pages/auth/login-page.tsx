@@ -58,7 +58,7 @@ export default function LoginPage() {
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
-        className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-teal-600 to-teal-800 p-12 flex-col justify-between text-white relative overflow-hidden"
+        className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#2c5f56] to-[#1e4139] p-12 flex-col justify-between text-white relative overflow-hidden"
       >
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2" />

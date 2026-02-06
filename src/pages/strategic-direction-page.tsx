@@ -149,7 +149,7 @@ export function StrategicDirectionPage() {
                 <Card key={phase.phase} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-[#4c9789] text-white rounded-full flex items-center justify-center font-bold text-lg">
+                      <div className="w-14 h-14 rounded-lg bg-[#4c9789] text-white flex items-center justify-center font-bold text-xl shadow-md">
                         {index + 1}
                       </div>
                       <div>

@@ -91,47 +91,75 @@ export default function FinancialPage() {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="bg-gradient-to-br from-green-600 to-green-700 text-white">
+        <Card className="hover:shadow-lg transition-shadow border-2 border-green-200 bg-gradient-to-br from-green-50 to-white">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-green-100">Total Budget</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Total Budget</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">${totalBudget.toLocaleString()}</div>
-            <p className="text-xs text-green-200 mt-1">Fiscal year 2024</p>
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-3xl font-bold text-foreground">${totalBudget.toLocaleString()}</div>
+                <p className="text-xs text-muted-foreground mt-1">Fiscal year 2024</p>
+              </div>
+              <div className="w-14 h-14 rounded-lg bg-green-100 text-green-700 flex items-center justify-center shadow-md">
+                <DollarSign className="w-7 h-7" />
+              </div>
+            </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-blue-600 to-blue-700 text-white">
+        <Card className="hover:shadow-lg transition-shadow border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-blue-100">Funds Allocated</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Funds Allocated</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">${totalAllocated.toLocaleString()}</div>
-            <p className="text-xs text-blue-200 mt-1">
-              {((totalAllocated / totalBudget) * 100).toFixed(1)}% of budget
-            </p>
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-3xl font-bold text-foreground">${totalAllocated.toLocaleString()}</div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {((totalAllocated / totalBudget) * 100).toFixed(1)}% of budget
+                </p>
+              </div>
+              <div className="w-14 h-14 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shadow-md">
+                <TrendingUp className="w-7 h-7" />
+              </div>
+            </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-teal-600 to-teal-700 text-white">
+        <Card className="hover:shadow-lg transition-shadow border-2 border-[#4c9789]/30 bg-gradient-to-br from-[#4c9789]/5 to-white">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-teal-100">Funds Utilized</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Funds Utilized</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">${totalUtilized.toLocaleString()}</div>
-            <p className="text-xs text-teal-200 mt-1">
-              {((totalUtilized / totalBudget) * 100).toFixed(1)}% of budget
-            </p>
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-3xl font-bold text-foreground">${totalUtilized.toLocaleString()}</div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {((totalUtilized / totalBudget) * 100).toFixed(1)}% of budget
+                </p>
+              </div>
+              <div className="w-14 h-14 rounded-lg bg-[#4c9789]/20 text-[#4c9789] flex items-center justify-center shadow-md">
+                <BarChart3 className="w-7 h-7" />
+              </div>
+            </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-purple-600 to-purple-700 text-white">
+        <Card className="hover:shadow-lg transition-shadow border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-purple-100">Total Donations</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">Total Donations</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">${totalDonations.toLocaleString()}</div>
-            <p className="text-xs text-purple-200 mt-1">All time received</p>
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-3xl font-bold text-foreground">${totalDonations.toLocaleString()}</div>
+                <p className="text-xs text-muted-foreground mt-1">All time received</p>
+              </div>
+              <div className="w-14 h-14 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shadow-md">
+                <DollarSign className="w-7 h-7" />
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>

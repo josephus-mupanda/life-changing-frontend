@@ -72,19 +72,19 @@ export function DashboardLayout() {
   return (
     <div className="min-h-screen bg-gray-50 flex">
       {/* Sidebar for Desktop - Now Fixed */}
-      <aside className="hidden md:flex w-64 flex-col border-r bg-gradient-to-b from-teal-900 to-teal-950 text-white fixed h-screen shadow-2xl">
+      <aside className="hidden md:flex w-64 flex-col border-r bg-gradient-to-b from-[#2c5f56] to-[#1e4139] text-white fixed h-screen shadow-2xl">
         <div className="p-6">
           <Link to="/" className="flex items-center gap-2 group">
             <motion.div 
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
-              className="w-10 h-10 rounded-full bg-sand-500/20 backdrop-blur-sm flex items-center justify-center"
+              className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center"
             >
-              <span className="text-xl font-bold text-sand-300">L</span>
+              <span className="text-xl font-bold text-white">L</span>
             </motion.div>
-            <span className="text-2xl font-bold tracking-tight text-sand-200 group-hover:text-sand-100 transition-colors">LCEO</span>
+            <span className="text-2xl font-bold tracking-tight text-white group-hover:text-sand-100 transition-colors">LCEO</span>
           </Link>
-          <p className="text-xs text-teal-300 mt-2 uppercase tracking-wider font-medium">{currentUserType} Portal</p>
+          <p className="text-xs text-white/60 mt-2 uppercase tracking-wider font-medium">{currentUserType} Portal</p>
         </div>
         
         <nav className="flex-1 px-4 space-y-1 overflow-y-auto">
@@ -100,8 +100,8 @@ export function DashboardLayout() {
                   to={item.href}
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive 
-                      ? "bg-gradient-to-r from-teal-700 to-teal-800 text-white shadow-lg ring-2 ring-teal-600/50" 
-                      : "text-teal-100 hover:bg-teal-800/60 hover:text-white"
+                      ? "bg-white/10 text-white shadow-lg ring-1 ring-white/20" 
+                      : "text-white/70 hover:bg-white/5 hover:text-white"
                   }`}
                 >
                   <item.icon className="w-5 h-5" />
@@ -112,20 +112,20 @@ export function DashboardLayout() {
           })}
         </nav>
         
-        <div className="p-4 border-t border-teal-800/50">
+        <div className="p-4 border-t border-white/10">
           <div className="flex items-center gap-3 mb-4 px-2">
-            <Avatar className="h-10 w-10 border-2 border-teal-600">
+            <Avatar className="h-10 w-10 border-2 border-white/20">
               <AvatarImage src="" />
-              <AvatarFallback className="bg-teal-800 text-sand-300 font-semibold">{initials}</AvatarFallback>
+              <AvatarFallback className="bg-white/10 text-white font-semibold">{initials}</AvatarFallback>
             </Avatar>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-white truncate">{user?.fullName || 'User'}</p>
-              <p className="text-xs text-teal-400 truncate">{user?.email || 'No email'}</p>
+              <p className="text-xs text-white/60 truncate">{user?.email || 'No email'}</p>
             </div>
           </div>
           <Button 
             variant="ghost" 
-            className="w-full justify-start text-teal-300 hover:text-white hover:bg-teal-800 transition-all"
+            className="w-full justify-start text-white/70 hover:text-white hover:bg-white/5 transition-all"
             onClick={handleLogout}
           >
             <LogOut className="mr-2 h-4 w-4" />

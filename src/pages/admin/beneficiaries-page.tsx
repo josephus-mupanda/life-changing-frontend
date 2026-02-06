@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { 
   Table, 
   TableBody, 
@@ -41,6 +42,7 @@ import { BeneficiaryStatus, Program } from '@/lib/types';
 import { toast } from 'sonner';
 
 export function BeneficiariesPage() {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [programFilter, setProgramFilter] = useState<string>('all');
@@ -79,18 +81,18 @@ export function BeneficiariesPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-teal-900">Beneficiaries</h1>
-          <p className="text-gray-500 mt-1">Manage all program participants and their progress.</p>
+          <h1 className="text-3xl font-bold text-gray-900">Beneficiaries</h1>
+          <p className="text-gray-600 mt-1">Manage and track beneficiary information</p>
         </div>
-        <div className="flex items-center gap-2">
-            <Button variant="outline" onClick={handleExport}>
-                <Download className="mr-2 h-4 w-4" />
-                Export
-            </Button>
-            <Button className="bg-teal-600 hover:bg-teal-700">
-                <Plus className="mr-2 h-4 w-4" />
-                Add Beneficiary
-            </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={handleExport}>
+            <Download className="w-4 h-4 mr-2" />
+            Export
+          </Button>
+          <Button className="bg-[#4c9789] hover:bg-[#3d7a6e]" onClick={() => navigate('/admin/beneficiaries/add')}>
+            <Plus className="w-4 h-4 mr-2" />
+            Add Beneficiary
+          </Button>
         </div>
       </div>
 

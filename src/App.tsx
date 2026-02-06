@@ -18,6 +18,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from '@/lib/auth-context';
 import { ProtectedRoute } from '@/components/auth/protected-route';
 import { UserType } from '@/lib/types';
+import { ScrollToTopOnRoute } from '@/components/scroll-to-top-route';
 
 // Import new pages
 import GoalsPage from '@/pages/beneficiary/goals-page';
@@ -29,6 +30,8 @@ import DonorsPage from '@/pages/admin/donors-page';
 import FinancialPage from '@/pages/admin/financial-page';
 import ReportsPage from '@/pages/admin/reports-page';
 import SettingsPage from '@/pages/admin/settings-page';
+import AddBeneficiaryPage from '@/pages/admin/add-beneficiary-page';
+import AddDonorPage from '@/pages/admin/add-donor-page';
 import { AboutPage } from '@/pages/about-page';
 import HowWeWorkPage from '@/pages/how-we-work-page';
 import StrategicDirectionPage from '@/pages/strategic-direction-page';
@@ -41,6 +44,7 @@ export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <ScrollToTopOnRoute />
         <Routes>
           {/* Public Routes */}
           <Route element={<PublicLayout />}>
@@ -69,8 +73,10 @@ export default function App() {
             <Route path="/admin" element={<DashboardLayout />}>
               <Route index element={<AdminDashboard />} />
               <Route path="beneficiaries" element={<BeneficiariesPage />} />
+              <Route path="beneficiaries/add" element={<AddBeneficiaryPage />} />
               <Route path="programs" element={<ProgramsPage />} />
               <Route path="donors" element={<DonorsPage />} />
+              <Route path="donors/add" element={<AddDonorPage />} />
               <Route path="financial" element={<FinancialPage />} />
               <Route path="reports" element={<ReportsPage />} />
               <Route path="settings" element={<SettingsPage />} />

@@ -6,25 +6,29 @@ const stats = [
     icon: Users,
     value: "500+",
     label: "Women Empowered",
-    description: "Through our holistic programs"
+    description: "Through our holistic programs",
+    color: "bg-blue-100 text-blue-700"
   },
   {
     icon: Briefcase,
     value: "120",
     label: "Businesses Started",
-    description: "Sustainable income generation"
+    description: "Sustainable income generation",
+    color: "bg-green-100 text-green-700"
   },
   {
     icon: Heart,
     value: "1,500+",
     label: "Health Screenings",
-    description: "Improving community well-being"
+    description: "Improving community well-being",
+    color: "bg-red-100 text-red-700"
   },
   {
     icon: Trophy,
     value: "95%",
     label: "Success Rate",
-    description: "Graduates who stay employed"
+    description: "Graduates who stay employed",
+    color: "bg-purple-100 text-purple-700"
   }
 ];
 
@@ -43,7 +47,7 @@ export function ImpactSection() {
           {stats.map((stat, index) => (
             <Card key={index} className="border-none shadow-lg bg-teal-50/50 hover:bg-teal-50 transition-colors duration-300">
               <CardContent className="pt-6 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-teal-100 mb-6 text-teal-600">
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-lg ${stat.color} mb-6`}>
                   <stat.icon className="w-8 h-8" />
                 </div>
                 <h3 className="text-4xl font-bold text-teal-900 mb-2">{stat.value}</h3>
